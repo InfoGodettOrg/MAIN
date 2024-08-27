@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto Edukashonal</title>
+    <title>Top 10 - Proyecto Edukashonal</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -27,44 +27,36 @@
                         <a href="tv-radio.html">TV | RADIO</a>
                         <a href="about.html">ABOUT US</a>
                         <a href="contact.html">CONTACT US</a>
-                        <a href="#" id="dark-mode-toggle"> DARK MODE</a>
+                        <a href="#" id="dark-mode-toggle">🌙 DARK MODE</a>
                     </div>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <!-- Image Box -->
-    <div class="image-box">
-        <img src="random-image.jpg" alt="Random Image">
-    </div>
-
-    <!-- Search Bar -->
-    <div class="search-container">
-        <input type="text" placeholder="Search Archive..." id="search-input">
-        <button type="submit" id="search-button">Search</button>
-    </div>
-
     <!-- Main Content -->
     <main>
+        <h1>Top 10</h1>
+
         <section class="thumbnails">
-            <a href="archive.html" class="thumbnail">
-                <h2>ARCHIVE</h2>
-                <p>Find past records and important documents.</p>
-            </a>
-            <a href="statistics.html" class="thumbnail">
-                <h2>STATISTICS</h2>
-                <p>View and analyze current data trends.</p>
-            </a>
-            <a href="history.html" class="thumbnail">
-                <h2>HISTORY</h2>
-                <p>Explore the rich history of Curaçao.</p>
-            </a>
-            <a href="tv-radio.html" class="thumbnail">
-                <h2>TV | RADIO</h2>
-                <p>Access local TV and radio stations.</p>
-            </a>
+            <div class="thumbnail">
+                <a href="voto-personal.html">
+                    <h2>VOTO PERSONAL</h2>
+                    <p>Explore the personal votes in the recent elections.</p>
+                </a>
+            </div>
+            <div class="thumbnail">
+                <a href="partidonan-ku-mas-voto.html">
+                    <h2>PARTIDONAN KU MAS VOTO</h2>
+                    <p>Discover the parties with the most votes.</p>
+                </a>
+            </div>
         </section>
+
+        <!-- Back to Electoral Button -->
+        <div class="button-container">
+            <button onclick="location.href='electoral.html';">Back to Electoral</button>
+        </div>
     </main>
 
     <!-- Footer -->

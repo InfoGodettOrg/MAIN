@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Votes - Proyecto Edukashonal</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Custom styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        .year-selection {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .year-selection select {
+            padding: 10px;
+            font-size: 1.2rem;
+        }
+
+        .back-to-electoral {
+            display: block;
+            width: 80%;
+            max-width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+            text-decoration: none;
+        }
+
+        body.dark-mode .back-to-electoral {
+            background-color: #6200ee;
+            color: #ffffff;
+        }
+
+        .back-to-electoral:hover {
+            background-color: #555;
+        }
+
+        body.dark-mode .back-to-electoral:hover {
+            background-color: #3700b3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Proyecto Edukashonal</a>
+            <ul class="nav-menu">
+                <li class="dropdown">
+                    <button class="dropbtn">
+                        <div class="hamburger-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="archive.html">ARCHIVE</a>
+                        <a href="statistics.html">STATISTICS</a>
+                        <a href="history.html">HISTORY</a>
+                        <a href="tv-radio.html">TV | RADIO</a>
+                        <a href="about.html">ABOUT US</a>
+                        <a href="contact.html">CONTACT US</a>
+                        <a href="#" id="dark-mode-toggle"> DARK MODE</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Personal Votes by Year</h1>
+
+        <div class="year-selection">
+            <label for="year-select">Select Election Year:</label>
+            <select id="year-select" onchange="navigateToYear()">
+                <option value="">Select Year</option>
+                <option value="personal-votes-2021.html">2021</option>
+                <option value="personal-votes-2017.html">2017</option>
+                <option value="personal-votes-2016.html">2016</option>
+                <option value="personal-votes-2012.html">2012</option>
+                <option value="personal-votes-2010.html">2010</option>
+            </select>
+        </div>
+
+        <a href="electoral.html" class="back-to-electoral">Back to Electoral</a>
+    </div>
+
+    <script>
+        function navigateToYear() {
+            const yearPage = document.getElementById('year-select').value;
+            if (yearPage) {
+                window.location.href = yearPage;
+            }
+        }
+    </script>
+</body>
+
+</html>

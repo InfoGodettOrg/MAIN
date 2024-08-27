@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 - Partidonan ku Mas Voto - Proyecto Edukashonal</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function sortTable(n) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("resultsTable");
+            switching = true;
+            dir = "asc";
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    if (dir == "asc") {
+                        if (n === 2 || n === 3) { // Check if sorting by Voto or Asiento
+                            if (parseInt(x.innerHTML) > parseInt(y.innerHTML)) {
+                                shouldSwitch = true;
+                                break;
+                            }
+                        } else if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir == "desc") {
+                        if (n === 2 || n === 3) { // Check if sorting by Voto or Asiento
+                            if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
+                                shouldSwitch = true;
+                                break;
+                            }
+                        } else if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    switchcount++;
+                } else {
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Proyecto Edukashonal</a>
+            <ul class="nav-menu">
+                <li class="dropdown">
+                    <button class="dropbtn">
+                        <div class="hamburger-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="archive.html">ARCHIVE</a>
+                        <a href="statistics.html">STATISTICS</a>
+                        <a href="history.html">HISTORY</a>
+                        <a href="tv-radio.html">TV | RADIO</a>
+                        <a href="about.html">ABOUT US</a>
+                        <a href="contact.html">CONTACT US</a>
+                        <a href="#" id="dark-mode-toggle">🌙 DARK MODE</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content-container">
+        <h1>Top 10 - Partidonan ku Mas Voto</h1>
+
+        <table id="resultsTable" class="styled-table">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">Date</th>
+                    <th>Partido</th>
+                    <th onclick="sortTable(2)">Voto</th>
+                    <th onclick="sortTable(3)">Asiento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>25/Feb/94</td>
+                    <td>PAR</td>
+                    <td>33996</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>12/Apr/91</td>
+                    <td>NVP</td>
+                    <td>33152</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>19/May/67</td>
+                    <td>DP</td>
+                    <td>30033</td>
+                    <td>13</td>
+                </tr>
+                <tr>
+                    <td>25/Jun/82</td>
+                    <td>MAN</td>
+                    <td>28209</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>25/Apr/75</td>
+                    <td>FOL</td>
+                    <td>24299</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>04/Jul/05</td>
+                    <td>PS</td>
+                    <td>19715</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>04/Jul/05</td>
+                    <td>MFK</td>
+                    <td>18450</td>
+                    <td>5</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Back to Top 10 Button -->
+        <div class="button-container">
+            <button onclick="location.href='top10.html';">Back to Top 10</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Proyecto Edukashonal. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOP 10 Voto Personal - Proyecto Edukashonal</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function sortTable(n) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("votoTable");
+            switching = true;
+            dir = "asc";
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    if (dir == "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir == "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    switchcount++;
+                } else {
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Proyecto Edukashonal</a>
+            <ul class="nav-menu">
+                <li class="dropdown">
+                    <button class="dropbtn">
+                        <div class="hamburger-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="archive.html">ARCHIVE</a>
+                        <a href="statistics.html">STATISTICS</a>
+                        <a href="history.html">HISTORY</a>
+                        <a href="tv-radio.html">TV | RADIO</a>
+                        <a href="about.html">ABOUT US</a>
+                        <a href="contact.html">CONTACT US</a>
+                        <a href="#" id="dark-mode-toggle">🌙 DARK MODE</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content-container">
+        <h1>TOP 10 Voto Personal</h1>
+
+        <table id="votoTable" class="styled-table">
+            <thead>
+                <tr>
+                    <th>NR</th>
+                    <th>NOMBER</th>
+                    <th onclick="sortTable(2)">FECHA NASEMENTU</th>
+                    <th>PARTIDO</th>
+                    <th onclick="sortTable(4)">VOTO</th>
+                    <th onclick="sortTable(5)">AÑA</th>
+                    <th onclick="sortTable(6)">ELEKSHON</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>MARTINA, DOMINICO FELIPE</td>
+                    <td>01/05/1935</td>
+                    <td>MAN</td>
+                    <td>25519</td>
+                    <td>1982</td>
+                    <td>STATEN</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>LIBERIA-PETERS, MARIA PHILOMENA</td>
+                    <td>20/05/1941</td>
+                    <td>PNP</td>
+                    <td>24502</td>
+                    <td>1990</td>
+                    <td>STATEN</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>GODETT, ANTHONY AMADEO</td>
+                    <td>12/11/1958</td>
+                    <td>FRENTE OBRERO</td>
+                    <td>19462</td>
+                    <td>2003</td>
+                    <td>KONSEHO INSULAR</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>de JONGH-ELHAGE, EMILY</td>
+                    <td>07/12/1946</td>
+                    <td>PAR</td>
+                    <td>19224</td>
+                    <td>2010</td>
+                    <td>STATEN</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>GODETT, WILSON</td>
+                    <td>11/08/1932 - 19/04/1995</td>
+                    <td>FRENTE OBRERO</td>
+                    <td>17504</td>
+                    <td>1975</td>
+                    <td>KONSEHO INSULAR</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>PISAS, GILMAR "PIK"</td>
+                    <td>28/10/1971</td>
+                    <td>MFK</td>
+                    <td>16912</td>
+                    <td>2021</td>
+                    <td>STATEN</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>WIELS, HELMIN MAGNO</td>
+                    <td>09/12/1958 - 05/05/2013</td>
+                    <td>PUEBLO SOBERANO</td>
+                    <td>16090</td>
+                    <td>2012</td>
+                    <td>STATEN</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>RHUGGENAATH, EUGENE</td>
+                    <td>04/02/1970</td>
+                    <td>PAR</td>
+                    <td>15049</td>
+                    <td>2017</td>
+                    <td>STATEN</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>SCHOTTE, GERRIT FRANCISCO</td>
+                    <td>09/09/1974</td>
+                    <td>MFK</td>
+                    <td>13512</td>
+                    <td>2012</td>
+                    <td>STATEN</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>da COSTA GOMEZ, MOISES FRUMENCIO</td>
+                    <td>27/10/1907 - 22/11/1966</td>
+                    <td>PNP</td>
+                    <td>12834</td>
+                    <td>1949</td>
+                    <td>STATEN</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Back to Top 10 Button -->
+        <div class="button-container">
+            <button onclick="location.href='top10.html';">Back to Top 10</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Proyecto Edukashonal. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
