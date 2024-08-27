@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Proyecto Edukashonal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Proyecto Edukashonal</a>
+            <ul class="nav-menu">
+                <li class="dropdown">
+                    <button class="dropbtn">
+                        <div class="hamburger-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="archive.html">ARCHIVE</a>
+                        <a href="statistics.html">STATISTICS</a>
+                        <a href="history.html">HISTORY</a>
+                        <a href="tv-radio.html">TV | RADIO</a>
+                        <a href="about.html">ABOUT US</a>
+                        <a href="contact.html">CONTACT US</a>
+                        <a href="#" id="dark-mode-toggle">🌙 DARK MODE</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="contact-us">
+        <section class="contact-intro">
+            <h1>Contact Us</h1>
+            <p>
+                We value your feedback and inquiries. Please use the form below to get in touch with us. We're here to help and look forward to hearing from you.
+            </p>
+        </section>
+
+        <section class="contact-form">
+            <h2>Get in Touch</h2>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Proyecto Edukashonal. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

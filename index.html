@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Edukashonal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Proyecto Edukashonal</a>
+            <ul class="nav-menu">
+                <li class="dropdown">
+                    <button class="dropbtn">
+                        <div class="hamburger-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="archive.html">ARCHIVE</a>
+                        <a href="statistics.html">STATISTICS</a>
+                        <a href="history.html">HISTORY</a>
+                        <a href="tv-radio.html">TV | RADIO</a>
+                        <a href="about.html">ABOUT US</a>
+                        <a href="contact.html">CONTACT US</a>
+                        <a href="#" id="dark-mode-toggle">🌙 DARK MODE</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Image Box -->
+    <div class="image-box">
+        <img src="random-image.jpg" alt="Random Image">
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" placeholder="Search Archive..." id="search-input">
+        <button type="submit" id="search-button">Search</button>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <section class="thumbnails">
+            <a href="archive.html" class="thumbnail">
+                <h2>ARCHIVE</h2>
+                <p>Find past records and important documents.</p>
+            </a>
+            <a href="statistics.html" class="thumbnail">
+                <h2>STATISTICS</h2>
+                <p>View and analyze current data trends.</p>
+            </a>
+            <a href="history.html" class="thumbnail">
+                <h2>HISTORY</h2>
+                <p>Explore the rich history of Curaçao.</p>
+            </a>
+            <a href="tv-radio.html" class="thumbnail">
+                <h2>TV | RADIO</h2>
+                <p>Access local TV and radio stations.</p>
+            </a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Proyecto Edukashonal. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
