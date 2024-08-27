@@ -1,15 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tula - Proyecto Edukashonal</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Custom styles for mobile compatibility */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            margin: 0;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+        }
+
+        .dropdown-content a {
+            color: #ffffff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .hamburger-icon {
+            cursor: pointer;
+        }
+
+        .hamburger-icon span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 4px 0;
+            background-color: #ffffff;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+            text-align: justify;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #ffffff;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button-container button:hover {
+            background-color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .nav-container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <!-- Navigation Bar -->
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">Proyecto Edukashonal</a>
             <ul class="nav-menu">
-                <li class="dropdown
+                <li class="dropdown">
+                    <button class="dropbtn">
+                        <div class="hamburger-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="archive.html">ARCHIVE</a>
+                        <a href="statistics.html">STATISTICS</a>
+                        <a href="history.html">HISTORY</a>
+                        <a href="tv-radio.html">TV | RADIO</a>
+                        <a href="about.html">ABOUT US</a>
+                        <a href="contact.html">CONTACT US</a>
+                        <a href="#" id="dark-mode-toggle">🌙 DARK MODE</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <h1>History of Tula</h1>
+        <p>
+            Tula was an enslaved African man who became a prominent leader in the fight for freedom in Curaçao. In 1795, Tula led a major slave revolt against the harsh conditions imposed by the Dutch colonialists. His leadership and courage in the face of overwhelming odds made him a symbol of resistance and hope for the enslaved population of the island.
+        </p>
+        <p>
+            The revolt, though ultimately unsuccessful in achieving immediate freedom for the enslaved people, had a lasting impact on the history of Curaçao. It brought international attention to the plight of the enslaved and set the stage for future movements towards emancipation. Today, Tula is remembered as a national hero in Curaçao, and his legacy continues to inspire the fight for justice and human rights.
+        </p>
+
+        <!-- Back to History Button -->
+        <div class="button-container">
+            <button onclick="location.href='history.html';">Back to History</button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Proyecto Edukashonal. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
