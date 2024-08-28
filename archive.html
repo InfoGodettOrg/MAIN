@@ -130,19 +130,12 @@
     <script>
     document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const response = await fetch('http://localhost:3000/api/articles');
+    const response = await fetch('/api/articles'); // Fetching from the same domain
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
     const articles = await response.json();
-    const urlParams = new URLSearchParams(window.location.search);
-    const query = urlParams.get('query');
-
-    if (query) {
-      document.getElementById('search-input').value = query;
-    }
-
-    searchArticles(articles); // Call searchArticles with the fetched articles
+    searchArticles(articles);
 
     // Attach event listeners for filters and search
     document.getElementById('search-input').addEventListener('keyup', () => searchArticles(articles));
@@ -154,7 +147,6 @@
     document.getElementById('archiveResults').innerText = "Failed to load articles.";
   }
 });
-
 
         // Function to display articles
         function displayArticles(articles) {
