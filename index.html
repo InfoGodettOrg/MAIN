@@ -278,33 +278,57 @@
     <!-- Search Bar -->
     <div class="search-container">
       <form action="archive.html" method="get" class="search-form">
-  <input type="text" placeholder="Search Archive..." id="search-input" name="query">
-  <button type="submit" id="search-button">Search</button>
+    <input type="text" placeholder="Search Archive..." id="search-input" name="query">
+    <button type="submit" id="search-button">Search</button>
 </form>
 
     </div>
 
     <!-- Main Content -->
-    <main>
-        <section class="thumbnails">
-            <a href="archive.html" class="thumbnail">
-                <h2>ARCHIVE</h2>
-                <p>Find past records and important documents.</p>
-            </a>
-            <a href="statistics.html" class="thumbnail">
-                <h2>STATISTICS</h2>
-                <p>View and analyze current data trends.</p>
-            </a>
-            <a href="history.html" class="thumbnail">
-                <h2>HISTORY</h2>
-                <p>Explore the rich history of Curaçao.</p>
-            </a>
-            <a href="tv-radio.html" class="thumbnail">
-                <h2>TV | RADIO</h2>
-                <p>Access local TV and radio stations.</p>
-            </a>
-        </section>
-    </main>
+<main>
+    <section class="thumbnails">
+        <a href="archive.html" class="thumbnail" onclick="syncSearch()">
+            <h2>ARCHIVE</h2>
+            <p>Find past records and important documents.</p>
+        </a>
+        <a href="statistics.html" class="thumbnail">
+            <h2>STATISTICS</h2>
+            <p>View and analyze current data trends.</p>
+        </a>
+        <a href="history.html" class="thumbnail">
+            <h2>HISTORY</h2>
+            <p>Explore the rich history of Curaçao.</p>
+        </a>
+        <a href="tv-radio.html" class="thumbnail">
+            <h2>TV | RADIO</h2>
+            <p>Access local TV and radio stations.</p>
+        </a>
+    </section>
+</main>
+
+<script>
+    // Function to sync search input
+    function syncSearch() {
+        const searchInput = document.getElementById('search-input').value;
+        if (searchInput) {
+            const form = document.createElement('form');
+            form.action = 'archive.html';
+            form.method = 'get';
+            form.style.display = 'none';
+
+            const queryInput = document.createElement('input');
+            queryInput.name = 'query';
+            queryInput.value = searchInput;
+
+            form.appendChild(queryInput);
+            document.body.appendChild(form);
+            form.submit();
+        }
+    }
+
+    // Adjust the search button onClick to call syncSearch
+    document.getElementById('search-button').onclick = syncSearch;
+</script>
 
     <!-- Footer -->
 <footer class="minimized-footer">
