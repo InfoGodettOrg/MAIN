@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Archive</title>
+</head>
+<body>
+    <h1>Archive</h1>
+    <div id="archiveResults"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            try {
+                const response = await fetch('formatted_data.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const articles = await response.json();
+                const archiveResults = document.getElementById('archiveResults');
+
+                articles.forEach(article => {
+                    const articleDiv = document.createElement('div');
+                    articleDiv.className = 'article';
+                    articleDiv.innerHTML = `
+                        <h3>${article.category} - ${article.date}</h3>
+                        <p><strong>Page:</strong> ${article.page}</p>
+                        <p>${article.description}</p>
+                    `;
+                    archiveResults.appendChild(articleDiv);
+                });
+            } catch (error) {
+                console.error("Error fetching the articles:", error);
+                document.getElementById('archiveResults').innerText = "Failed to load articles.";
+            }
+        });
+    </script>
+</body>
+</html>
