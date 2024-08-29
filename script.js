@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
     async function fetchArticles() {
         try {
             const response = await fetch('path/to/your/formatted_data.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             const articles = await response.json();
             displayArticles(articles);
         } catch (error) {
@@ -47,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const articleMonth = article.getAttribute('data-month');
             const articleYear = article.getAttribute('data-year');
 
-            const matchesQuery = title.includes(query) || description.includes(query) || articleCategory.includes(query);
+            const matchesQuery = title.includes(query) || description.includes(query);
             const matchesCategory = !category || articleCategory === category;
             const matchesMonth = !month || articleMonth === month;
             const matchesYear = !year || articleYear === year;
@@ -66,4 +69,23 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('categoryFilter').addEventListener('change', searchArticles);
     document.getElementById('monthFilter').addEventListener('change', searchArticles);
     document.getElementById('yearFilter').addEventListener('change', searchArticles);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+
+    // Check for saved dark mode preference in localStorage
+    if (localStorage.getItem('dark-mode') === 'true') {
+        body.classList.add('dark-mode');
+    }
+
+    // Toggle dark mode on click
+    toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        body.classList.toggle('dark-mode');
+
+        // Save preference in localStorage
+        localStorage.setItem('dark-mode', body.classList.contains('dark-mode'));
+    });
 });
