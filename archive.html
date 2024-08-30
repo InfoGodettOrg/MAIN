@@ -35,6 +35,29 @@
         .article p {
             margin: 5px 0;
         }
+
+        /* Dark Mode Styles */
+        body.dark-mode .article {
+            background-color: #2c3e50;
+            color: #ccc;
+        }
+
+        body.dark-mode .filters select {
+            background-color: #2c3e50;
+            color: #ccc;
+            border: 1px solid #ccc;
+        }
+
+        body.dark-mode .search-container input {
+            background-color: #2c3e50;
+            color: #ccc;
+            border: 1px solid #ccc;
+        }
+
+        body.dark-mode .search-container button {
+            background-color: #34495e;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -129,81 +152,97 @@
     <!-- JavaScript Code -->
     <script>
     document.addEventListener("DOMContentLoaded", async () => {
-try {
-    const response = await fetch('formatted_data.json'); // Update this path as needed
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
-    }
-    const articles = await response.json();
-    const urlParams = new URLSearchParams(window.location.search);
-    const query = urlParams.get('query');
+        try {
+            const response = await fetch('formatted_data.json'); // Update this path as needed
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const articles = await response.json();
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('query');
 
-    if (query) {
-        document.getElementById('search-input').value = query;
-    }
+            if (query) {
+                document.getElementById('search-input').value = query;
+            }
 
-    searchArticles(articles); // Call searchArticles with the fetched articles
+            searchArticles(articles); // Call searchArticles with the fetched articles
 
-    // Attach event listeners for filters and search
-    document.getElementById('search-input').addEventListener('keyup', () => searchArticles(articles));
-    document.getElementById('categoryFilter').addEventListener('change', () => searchArticles(articles));
-    document.getElementById('monthFilter').addEventListener('change', () => searchArticles(articles));
-    document.getElementById('yearFilter').addEventListener('change', () => searchArticles(articles));
-} catch (error) {
-    console.error("Error fetching the articles:", error);
-    document.getElementById('archiveResults').innerText = "Failed to load articles.";
-}
-});
+            // Attach event listeners for filters and search
+            document.getElementById('search-input').addEventListener('keyup', () => searchArticles(articles));
+            document.getElementById('categoryFilter').addEventListener('change', () => searchArticles(articles));
+            document.getElementById('monthFilter').addEventListener('change', () => searchArticles(articles));
+            document.getElementById('yearFilter').addEventListener('change', () => searchArticles(articles));
 
-        // Function to display articles
-        function displayArticles(articles) {
-            const archiveResults = document.getElementById('archiveResults');
-            archiveResults.innerHTML = ''; // Clear existing results
+            // Dark mode toggle
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const currentTheme = localStorage.getItem('theme');
+            if (currentTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+            }
 
-            articles.forEach(article => {
-                const articleDiv = document.createElement('div');
-                articleDiv.className = 'article';
-                articleDiv.setAttribute('data-category', article.category);
-                articleDiv.setAttribute('data-month', article.date.split('-')[1]);
-                articleDiv.setAttribute('data-year', article.date.split('-')[0]);
-
-                articleDiv.innerHTML = `
-                    <h3>${article.category} - ${article.date}</h3>
-                    <p><strong>Page:</strong> ${article.page}</p>
-                    <p>${article.description}</p>
-                `;
-
-                archiveResults.appendChild(articleDiv);
-            });
-        }
-
-        // Function to filter and search articles
-        function searchArticles(articles) {
-            const query = document.getElementById('search-input').value.toLowerCase();
-            const category = document.getElementById('categoryFilter').value.toLowerCase();
-            const month = document.getElementById('monthFilter').value;
-            const year = document.getElementById('yearFilter').value;
-            const archiveResults = document.getElementById('archiveResults');
-            archiveResults.innerHTML = ''; // Clear existing results
-
-            const filteredArticles = articles.filter(article => {
-                const title = `${article.category} - ${article.date}`.toLowerCase();
-                const description = article.description.toLowerCase();
-                const articleCategory = article.category.toLowerCase();
-                const articleMonth = article.date.split('-')[1];
-                const articleYear = article.date.split('-')[0];
-
-                const matchesQuery = title.includes(query) || description.includes(query);
-                const matchesCategory = !category || articleCategory === category;
-                const matchesMonth = !month || articleMonth === month;
-                const matchesYear = !year || articleYear === year;
-
-                return matchesQuery && matchesCategory && matchesMonth && matchesYear;
+            darkModeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                let theme = 'light';
+                if (document.body.classList.contains('dark-mode')) {
+                    theme = 'dark';
+                }
+                localStorage.setItem('theme', theme);
             });
 
-            displayArticles(filteredArticles);
+        } catch (error) {
+            console.error("Error fetching the articles:", error);
+            document.getElementById('archiveResults').innerText = "Failed to load articles.";
         }
+    });
+
+    // Function to display articles
+    function displayArticles(articles) {
+        const archiveResults = document.getElementById('archiveResults');
+        archiveResults.innerHTML = ''; // Clear existing results
+
+        articles.forEach(article => {
+            const articleDiv = document.createElement('div');
+            articleDiv.className = 'article';
+            articleDiv.setAttribute('data-category', article.category);
+            articleDiv.setAttribute('data-month', article.date.split('-')[1]);
+            articleDiv.setAttribute('data-year', article.date.split('-')[0]);
+
+            articleDiv.innerHTML = `
+                <h3>${article.category} - ${article.date}</h3>
+                <p><strong>Page:</strong> ${article.page}</p>
+                <p>${article.description}</p>
+            `;
+
+            archiveResults.appendChild(articleDiv);
+        });
+    }
+
+    // Function to filter and search articles
+    function searchArticles(articles) {
+        const query = document.getElementById('search-input').value.toLowerCase();
+        const category = document.getElementById('categoryFilter').value.toLowerCase();
+        const month = document.getElementById('monthFilter').value;
+        const year = document.getElementById('yearFilter').value;
+        const archiveResults = document.getElementById('archiveResults');
+        archiveResults.innerHTML = ''; // Clear existing results
+
+        const filteredArticles = articles.filter(article => {
+            const title = `${article.category} - ${article.date}`.toLowerCase();
+            const description = article.description.toLowerCase();
+            const articleCategory = article.category.toLowerCase();
+            const articleMonth = article.date.split('-')[1];
+            const articleYear = article.date.split('-')[0];
+
+            const matchesQuery = title.includes(query) || description.includes(query);
+            const matchesCategory = !category || articleCategory === category;
+            const matchesMonth = !month || articleMonth === month;
+            const matchesYear = !year || articleYear === year;
+
+            return matchesQuery && matchesCategory && matchesMonth && matchesYear;
+        });
+
+        displayArticles(filteredArticles);
+    }
     </script>
-    <script src="script.js"></script>
 </body>
 </html>
